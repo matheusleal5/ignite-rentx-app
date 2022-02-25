@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+import "reflect-metadata";
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { pathsToModuleNameMapper } from "ts-jest/utils";
 
