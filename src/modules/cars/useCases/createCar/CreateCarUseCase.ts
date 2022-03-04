@@ -9,7 +9,7 @@ interface IRequest {
   description: string;
   daily_rate: number;
   license_plate: string;
-  file_amount: number;
+  fine_amount: number;
   brand: string;
   category_id: string;
 }
@@ -25,7 +25,7 @@ class CreateCarUseCase {
     description,
     daily_rate,
     license_plate,
-    file_amount,
+    fine_amount,
     brand,
     category_id,
   }: IRequest): Promise<Car> {
@@ -42,7 +42,7 @@ class CreateCarUseCase {
       description,
       daily_rate,
       license_plate,
-      file_amount,
+      fine_amount,
       brand,
       category_id,
     });

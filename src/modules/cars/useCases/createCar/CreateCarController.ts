@@ -10,7 +10,7 @@ class CreateCarController {
       description,
       daily_rate,
       license_plate,
-      file_amount,
+      fine_amount,
       brand,
       category_id,
     } = request.body;
@@ -22,7 +22,7 @@ class CreateCarController {
       description,
       daily_rate,
       license_plate,
-      file_amount,
+      fine_amount,
       brand,
       category_id,
     });
