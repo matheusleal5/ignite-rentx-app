@@ -1,3 +1,0 @@
-interface IRentalsRepository {
-  create(): void;
-}
