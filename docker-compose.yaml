@@ -1,33 +1,41 @@
 version: "3.9"
 
 services:
-  database: #Nome do Service que deve estar no arquivo de criação da conexão
+  postgres:
+    container_name: postgres_container
     image: postgres
-    container_name: database_ignite
-    restart: always
-    ports: 
-      - 5432:5432
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=ignite
       - POSTGRES_DB=rentx
+    ports: 
+      - 5432:5432
+    networks:
+      - net
+    restart: always
     volumes:
-      - pgdata:/data/postgres
+      - postgres:/data/postgres
 
   app:
     build: .
-    container_name: rentx
-    restart: always
-    ports: 
-      - 3333:3333
-      - 9229:9229 #Porta para poder usar o debug
+    container_name: server_container
     volumes: 
       - .:/usr/src/app
-    links: 
-      - database
+    links:
+      - postgres
     depends_on:
-      - database
+      - postgres
+    ports: 
+      - 3333:3333
+      - 9229:9229
+    networks:
+      - net
+    restart: always
+
+networks:
+  net:
+    driver: bridge
 
 volumes:
-  pgdata:
+  postgres:
     driver: local
